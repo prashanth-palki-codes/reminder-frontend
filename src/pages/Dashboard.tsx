@@ -90,14 +90,14 @@ export default function Dashboard() {
         await api.put(`/reminders/${editingId}`, {
           title,
           description,
-          remindAt,
+          remindAt: new Date(remindAt).toISOString(),
         });
         toast.success("Reminder updated");
       } else {
         await api.post("/reminders", {
           title,
           description,
-          remindAt,
+          remindAt: new Date(remindAt).toISOString(),
         });
         toast.success("Reminder added");
       }
